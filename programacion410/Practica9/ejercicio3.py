@@ -8,6 +8,8 @@ class Cuenta_bancaria:
 
     def saldo_disponible(self):
         return self.__saldo
+
+    
     def depositar (self, un_monto):
         self.__saldo+=un_monto
         return True
@@ -17,8 +19,8 @@ class Cuenta_bancaria:
         return un_monto-(un_monto*Cuenta_bancaria.INTERES)
     def transferir (self, cuenta_bancaria, un_monto):
         self._extraer(un_monto)
-        cuenta_bancaria.depositar(self.__con_interes())
-    def modificar_limite_extracción (self, un_monto, un_limite):
+        cuenta_bancaria.depositar(self.__con_interes(un_monto))
+    def modificar_limite_extraccion (self, un_monto, un_limite):
         if un_monto > un_limite and self._autorización_de_limite()==False:
             return False
         else:
@@ -44,11 +46,14 @@ class Caja_ahorro (Cuenta_bancaria):
             super()._extraer(un_monto)
             return True
         else:
-            print("Limite de extracción excedido")
+            print("Limite de extraccion excedido")
             return False
 
-    def modificar_limite_extracción (self, un_monto):
-        super().modificar_limite_extracción(un_monto, self.__limite_extraccion)
+    def modificar_limite_extraccion (self, un_monto):
+        super().modificar_limite_extraccion(un_monto, self.__limite_extraccion)
+
+    def get_limite_extraccion(self):
+        return self.__limite_extraccion
         
 
 
@@ -80,11 +85,11 @@ class Cuenta_corriente (Cuenta_bancaria):
             return False
 
 
-    def modificar_limite_extracción (self, un_monto):
-        super().modificar_limite_extracción(un_monto, self.__limite_extraccion)
+    def modificar_limite_extraccion (self, un_monto):
+        super().modificar_limite_extraccion(un_monto, self.__limite_extraccion)
 
     """
-    def modificar_limite_extracción (self, un_monto):
+    def modificar_limite_extraccion (self, un_monto):
         if un_monto > self.__limite_extraccion and self._autorización_de_limite()==False:
             print("Extensión de límite Rechazado.")
         else:
@@ -92,21 +97,22 @@ class Cuenta_corriente (Cuenta_bancaria):
             print(f"Nuevo límite Aceptado.\n\tLímite: {self.__limite_extraccion}")
     """
 
-cliente1= Cuenta_corriente("Ivan")
-cliente1.depositar(10000)
-print(cliente1.saldo_disponible())
-cliente1.extraer(8000)
-print(cliente1.saldo_disponible())
-cliente1.extraer(7000)
-print(cliente1.saldo_disponible())
-cliente1.modificar_limite_descubierto(15000)
-cliente1.extraer(9000)
-print(cliente1.saldo_disponible())
-print(cliente1.titular())
-cliente1.extraer(17000)
-print(cliente1.saldo_disponible())
-print(cliente1)
-cliente1.depositar(300000)
-cliente1.modificar_limite_extracción(200000)
-cliente1.extraer(180000)
-print(cliente1.saldo_disponible())
+if __name__ == '__main__':
+    cliente1= Cuenta_corriente("Ivan")
+    cliente1.depositar(10000)
+    print(cliente1.saldo_disponible())
+    cliente1.extraer(8000)
+    print(cliente1.saldo_disponible())
+    cliente1.extraer(7000)
+    print(cliente1.saldo_disponible())
+    cliente1.modificar_limite_descubierto(15000)
+    cliente1.extraer(9000)
+    print(cliente1.saldo_disponible())
+    print(cliente1.titular())
+    cliente1.extraer(17000)
+    print(cliente1.saldo_disponible())
+    print(cliente1)
+    cliente1.depositar(300000)
+    cliente1.modificar_limite_extraccion(200000)
+    cliente1.extraer(180000)
+    print(cliente1.saldo_disponible())
