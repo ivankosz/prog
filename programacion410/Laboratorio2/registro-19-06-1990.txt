@@ -1,0 +1,9 @@
+Período: 19-06-1990 al 23-06-1990
+Total de minutos: 146
+Promedio de minutos: 29.2 minutos por día
+--Detalle:
+19-06-1990: 25
+20-06-1990: 14
+21-06-1990: 32
+22-06-1990: 60
+23-06-1990: 15

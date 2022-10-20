@@ -1,0 +1,9 @@
+Período: 09-08-2022 al 13-08-2022
+Total de minutos: 494
+Promedio de minutos: 98.8 minutos por día
+--Detalle:
+09-08-2022: 25
+10-08-2022: 32
+11-08-2022: 415
+12-08-2022: 12
+13-08-2022: 10
